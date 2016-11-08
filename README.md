@@ -1,1 +1,7 @@
-hi
+Project
+-------
+Inventory Management System
+
+Features
+--------
+

@@ -1,5 +1,6 @@
 package com.panthers.ims;
 
+import com.panthers.external.WarehouseManager;
 import com.panthers.ims.*;
 import com.panthers.utilities.*;
 
@@ -17,11 +18,11 @@ public class InventoryManagementSystem {
 		return null;
 	}
 	
-	public boolean createStore(Warehouse house, Store store) {
+	public boolean createStore(WarehouseManager house, Store store) {
 		return false;
 	}
 	
-	public boolean archiveStore(Warehouse house, Store store) {
+	public boolean archiveStore(WarehouseManager house, Store store) {
 		return false;
 	}
 	

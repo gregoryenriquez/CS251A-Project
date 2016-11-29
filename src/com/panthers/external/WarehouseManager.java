@@ -1,5 +1,8 @@
 package com.panthers.external;
 
-public class WarehouseManager {
+import java.util.ArrayList;
+import com.panthers.utilities.Warehouse;
 
+public class WarehouseManager {
+	private ArrayList<Warehouse> warehouses;
 }

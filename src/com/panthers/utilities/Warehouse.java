@@ -45,6 +45,16 @@ public class Warehouse {
 	 }
 	}
 	
+	public int queryQuantity(String UPC) {
+	  WarehouseLocation whLoc = itemLocations.get(UPC);
+	  if (whLoc == null) {
+	    return 0;
+	  } else {
+	    LineItem lit = aisles.get(whLoc.getAisle()).shelves.get(whLoc.getShelf()).stores.get(whLoc.getStore()).lineItem;
+	    return lit.quantity;
+	  }
+	}
+	
 	private class WarehouseLocation {
 	  private int aisleNum;
 	  private int shelfNum;

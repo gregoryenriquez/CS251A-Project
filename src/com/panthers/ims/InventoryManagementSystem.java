@@ -1,16 +1,31 @@
 package com.panthers.ims;
 
+import java.util.ArrayList;
+
 import com.panthers.external.WarehouseManager;
-import com.panthers.ims.*;
-import com.panthers.utilities.*;
 
 
 public class InventoryManagementSystem {
-	public int queryQuantity(String upc) {
-		return 0;
+  public static ArrayList<Order> ledger;
+  public static WarehouseManager warehouseManager;
+  
+  public InventoryManagementSystem() {
+    warehouseManager = new WarehouseManager();
+  }
+  
+  public InventoryManagementSystem(WarehouseManager externalManager) {
+    /*
+     * if WarehouseManager is an external entity, then first set warehouse manager, otherwise default to local
+     */
+    warehouseManager = externalManager;
+  }
+  
+	public int queryQuantity(String UPC, WarehouseManager wm) {
+	  return wm.queryQuantity(UPC);
 	}
 	
 	public boolean executeTransaction(Order order) {
+	  writeToLedger(order);
 		return false;
 	}
 	
@@ -26,7 +41,7 @@ public class InventoryManagementSystem {
 		return false;
 	}
 	
-	public void writeToLedger(Order order) {
-		
+	private void writeToLedger(Order order) {
+		ledger.add(order);
 	}
 }

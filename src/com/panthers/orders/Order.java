@@ -7,7 +7,7 @@ import com.panthers.store.LineItem;
 import com.panthers.utilities.Date;
 import com.panthers.utilities.Money;
 
-public class Order {
+public abstract class Order {
 	// Order and related order classes have no set functions as orders cannot be modified once created other than order status
 	public enum ORDER_STATUS {
 		ORDER_PROCESSING,

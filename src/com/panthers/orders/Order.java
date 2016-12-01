@@ -28,7 +28,7 @@ public abstract class Order {
 		this.transactionDate = td; 
 		this.totalPrice = p;
 		this.lineItems = li;
-		this.totalPrice = new Money(0);
+		this.totalPrice = new Money(0.0d);
 		this.orderStatus = ORDER_STATUS.ORDER_PROCESSING;
 		
 		for (int i = 0; i < lineItems.size(); i++) {

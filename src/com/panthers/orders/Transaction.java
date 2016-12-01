@@ -23,4 +23,20 @@ public class Transaction {
 		this.transactionId = Long.toString(System.currentTimeMillis());
 		this.executedDate = d;
 	}
+	
+	public Order getOrder() {
+		return this.order;
+	}
+	
+	public String getId() {
+		return this.transactionId;
+	}
+	
+	public Date getExecutedDate() {
+		return this.executedDate;
+	}
+	
+	public TRANSACTION_TYPE getTransactionType() {
+		return this.ttype;
+	}
 }

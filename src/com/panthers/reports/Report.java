@@ -1,5 +1,6 @@
 package com.panthers.reports;
 
-public class Report {
-
+public interface Report {
+	public void printReport();
+	public void saveReportAsPDF();
 }

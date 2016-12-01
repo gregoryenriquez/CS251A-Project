@@ -20,7 +20,7 @@ public class ForecastEstimator implements Report {
 	}
 
 	@Override
-	public void saveReportAsPDF() {
+	public void saveReportAsPDF(String filePath) {
 		// TODO Auto-generated method stub
 		
 	}

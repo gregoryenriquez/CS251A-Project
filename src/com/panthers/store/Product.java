@@ -20,4 +20,12 @@ public class Product {
 	public void setPrice(Money m) {
 		unitPrice = m;
 	}
+	
+	public String getUPC() {
+		return this.UPC;
+	}
+	
+	public String getDescription() {
+		return this.description;
+	}
 }

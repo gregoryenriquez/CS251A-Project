@@ -59,6 +59,17 @@ public class Date implements Comparable<Date>
 		return "Date : " +  this.month + "/" + this.day + "/" + this.year;
 	}
 	
+	public Date duration (Date startDate, Date endDate)
+	{
+		int dayDuration = ChronoUnit.DAYS.between(startDate, endDate);
+		int monthDuration = ChronoUnit.MONTHS.between(startDate, endDate);
+		int yearDuration = ChronoUnit.YEARS.between(startDate, endDate);
+		
+		
+		return new Date(dayDuration, monthDuration, yearDuration);
+		
+	}
+	
 	
 	
 	

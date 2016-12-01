@@ -32,7 +32,7 @@ public abstract class Order {
 		this.orderStatus = ORDER_STATUS.ORDER_PROCESSING;
 		
 		for (int i = 0; i < lineItems.size(); i++) {
-			this.totalPrice.add(lineItems.get(i).getProduct().getPrice());
+			this.totalPrice = new Money(this.totalPrice.getAmount() + lineItems.get(i).getProduct().getPrice().getAmount());
 		}
 		
 		

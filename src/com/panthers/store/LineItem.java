@@ -1,5 +1,6 @@
 package com.panthers.store;
 
+import com.panthers.utilities.Money;
 import com.panthers.utilities.Quantity;
 
 public class LineItem {
@@ -26,6 +27,6 @@ public class LineItem {
 	}
 	
 	public Money getLineItemPrice() {
-		return new Money(this.product.getPrice() * this.quantity.getAmount());
+		return new Money(this.product.getPrice().getAmount() * this.quantity.getAmount());
 	}
 }

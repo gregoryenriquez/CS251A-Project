@@ -15,4 +15,16 @@ public class InventoryManager {
 	public Store queryInventory(String UPC) {
 		return null;
 	}
+	
+	public boolean addProduct(String UPC) {
+		
+	}
+	
+	public boolean archiveProduct(String UPC) {
+		
+	}
+	
+	public boolean executeReplenishmentOrder(ReplenishmentOrder ro) {
+		
+	}
 }

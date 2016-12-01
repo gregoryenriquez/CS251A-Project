@@ -1,5 +1,7 @@
 package com.panthers.warehouse;
 
-public interface WarehouseControls {
+import com.panthers.orders.PurchaseOrder;
 
+public interface WarehouseControls {
+	public void processPurchaseOrder(PurchaseOrder po);
 }

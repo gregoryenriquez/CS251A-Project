@@ -8,11 +8,13 @@ import com.panthers.utilities.Supplier;
 public class Product {
 	private Money unitPrice;
 	private String UPC;
+	private String name;
 	private String description;
 	private ArrayList<Supplier> suppliers;
 	
-	public Product(String upc, String desc, Money m) {
+	public Product(String upc, String name, String desc, Money m) {
 		this.UPC = upc;
+		this.name = name;
 		this.description = desc;
 		this.unitPrice = m;
 		this.suppliers = new ArrayList<Supplier>();

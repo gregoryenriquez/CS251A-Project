@@ -14,11 +14,13 @@ public class Store {
 	private ArrayList<Transaction> records;
 	private OrderPoint orderPoint;
 	private Product product;
+	private StoreStatus status;
 	
-	public enum STORE_STATUS {
+	public enum StoreStatus {
 		LOW_STOCK,
 		OUT_OF_STOCK,
-		AVAILABLE
+		AVAILABLE,
+		ARCHIVED
 	}
 	
 	public Store(String id, Product p, OrderPoint op) {
@@ -28,6 +30,11 @@ public class Store {
 		this.reservedQuantity = new Quantity(0, Unit.COUNT);
 		this.records = new ArrayList<Transaction>();
 		this.orderPoint = op;
+		this.status = StoreStatus.AVAILABLE;
+	}
+	
+	public void setStoreStatus(StoreStatus s) {
+		this.status = s;
 	}
 	
 	public String getId() {

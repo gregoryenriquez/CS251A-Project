@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class DepreciationEstimator implements Report {
+public class DepreciationEstimator implements IReport {
 	private static DepreciationEstimator instance = null;
 	
 	public static DepreciationEstimator getInstance() {
@@ -47,7 +47,7 @@ public class DepreciationEstimator implements Report {
             Transaction[] allTrans = null;
             double totalNewAmount = 0;
             int totalBuyingCount = 0;
-            ArrayList<Transaction> trans = new ArrayList<Transaction>(Arrays.asList(allTrans));
+            ArrayList<Transaction> trans = new ArrayList<>(Arrays.asList(allTrans));
             for (int i = 0; i < trans.size(); i++) {
                 Transaction t = trans.get(i);
                 // if (t.getType == PURCHASE)

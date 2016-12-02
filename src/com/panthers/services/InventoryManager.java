@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.panthers.orders.Order;
 import com.panthers.orders.OrderPoint;
 import com.panthers.orders.ReplenishmentOrder;
+import com.panthers.orders.Transaction;
 import com.panthers.store.LineItem;
 import com.panthers.store.Product;
 import com.panthers.store.Store;
@@ -51,30 +53,48 @@ public class InventoryManager {
 	public boolean executeReplenishmentOrder(ReplenishmentOrder order) {
 		ArrayList<LineItem> lineItems = order.getLineItems();
 		for (int i = 0; i < lineItems.size(); i++) {
-			String upc = lineItems.get(i).getProduct().getUpc();
+			String upc = lineItems.get(i).getProduct().getUPC();
 			Quantity quantity = lineItems.get(i).getQuantity();
-			inventory.get(upc).addProductQuantity(quantity);
+			try {
+				incrementAndWrite(upc, quantity, order);
+			} catch (Exception e) {
+				return false;
+			}
 		}
 		return true;
 	}
 	
-	public void incrementStock(String UPC, Quantity q) {
+	public void incrementAndWrite(String UPC, Quantity quantity, Order order) throws Exception {
+		incrementStock(UPC, quantity);
+		createTransaction(inventory.get(UPC), order);
+	}
+	
+	public void decrementAndWrite(String UPC, Quantity quantity, Order order) throws Exception {
+		decrementStock(UPC, quantity);
+		createTransaction(inventory.get(UPC), order);
+	}
+	
+	private void incrementStock(String UPC, Quantity q) throws Exception{
+		inventory.get(UPC).addProductQuantity(q);
+	}
+	
+	private void decrementStock(String UPC, Quantity q) throws Exception {
+		inventory.get(UPC).removeProductQuantity(q);
+	}
 		
-	}
-	
-	public void decrementStock(String UPC, Quantity q) {
-		
-	}
-	
-	public boolean editStore(String UPC) {
-		return false;
-	}
-	
 	public OrderPoint calculateOrderPoint(Store store) {
-		return new OrderPoint(null, null, null);
+		return new OrderPoint();
 	}
 	
-	public void createTransaction() {
-		
+	public void createTransaction(Store store, Order order) {
+		store.addRecord(new Transaction(order, order.getTransactionDate()));
+	}
+	
+	public void reserveQuantity(String UPC, Quantity quantity) throws Exception {
+		inventory.get(UPC).addReservedQuantity(quantity);
+	}
+	
+	public void releaseQuantity(String UPC, Quantity quantity) throws Exception {
+		inventory.get(UPC).removeReservedQuantity(quantity);
 	}
 }

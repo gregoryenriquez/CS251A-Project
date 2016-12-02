@@ -7,31 +7,31 @@ import com.panthers.reports.SalesRecorder;
 
 public class ReportManager {
 	
-	public static void generateInventoryStatusReport() {
-		InventoryStatusRecorder.getInstance().saveReportAsPDF();
+	public static void generateInventoryStatusReport(String filePath) {
+		InventoryStatusRecorder.getInstance().saveReportAsPDF(filePath);
 	}
 	
-	public static void generateSalesReport() {
-		SalesRecorder.getInstance().saveReportAsPDF();
+	public static void generateSalesReport(String filePath) {
+		SalesRecorder.getInstance().saveReportAsPDF(filePath);
 	}
 	
 	public static void generateValuationReport() {
 		
 	}
 	
-	public static void generateDepreciationReport() {
-		DepreciationEstimator.getInstance().saveReportAsPDF();
+	public static void generateDepreciationReport(String filePath) {
+		DepreciationEstimator.getInstance().saveReportAsPDF(filePath);
 	}
 	
-	public static void generateForecastReport() {
-		ForecastEstimator.getInstance().saveReportAsPDF();
+	public static void generateForecastReport(String filePath) {
+		ForecastEstimator.getInstance().saveReportAsPDF(filePath);
 	}
 	
-	public static void generateValueReport() {
+	public static void generateValueReport(String filePath) {
 		
 	}
 	
-	public static void generateOverallReport() {
+	public static void generateOverallReport(String filePath) {
 		
 	}
 }

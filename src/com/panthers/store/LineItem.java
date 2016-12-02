@@ -1,23 +1,38 @@
 package com.panthers.store;
 
-import com.panthers.services.InventoryManager;
 import java.util.Objects;
+
+import com.panthers.utilities.Quantity;
 
 public class LineItem {
 	private String storeId;
 	private Product product;
+	private Quantity quantity;
 
     public LineItem(String storeId, Product product) {
         this.storeId = storeId;
         this.product = product;
+        this.quantity = new Quantity(0, Quantity.Unit.count);
     }
 	
     public String getStoreId() {
-        return storeId;
+        return this.storeId;
     }
 	
     public Product getProduct() {
-        return product;
+        return this.product;
+    }
+    
+    public Quantity getQuantity() {
+    	return this.quantity;
+    }
+    
+    public void addQuantity(Quantity q) throws Exception {
+    	this.quantity.add(q);
+    }
+    
+    public void removeQuantity(Quantity q) throws Exception {
+    	this.quantity.sub(q);
     }
 
     @Override

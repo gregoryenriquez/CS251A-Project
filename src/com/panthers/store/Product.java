@@ -23,6 +23,23 @@ public class Product {
 	public void setPrice(Money m) {
 		unitPrice = m;
 	}
+	
+	public String getUPC() {
+		return this.UPC;
+	}
+	
+	public void setDescription(String desc) {
+		this.description = desc;
+	}
+	
+	public String getDescription() {
+		return this.description;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
 
     @Override
     public int hashCode() {

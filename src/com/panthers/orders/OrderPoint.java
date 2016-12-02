@@ -15,6 +15,16 @@ public class OrderPoint {
 		this.threshold = thresh;
 	}
 	
+	/**
+	 * default constructor for OrderPoint, placeholder for now
+	 * @param q
+	 */
+	public OrderPoint() {
+		this.orderQuantity = new Quantity(100, null);
+		this.threshold = new Quantity(10, null);
+		this.orderBy = new Date(1, 1, 2017);
+	}
+	
 	public void setThreshold(Quantity q) {
 		this.threshold = q;
 	}

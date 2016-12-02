@@ -1,18 +1,18 @@
 package com.panthers.services;
 
-import com.panthers.reports.DepreciationEstimator;
 import com.panthers.reports.ForecastEstimator;
-import com.panthers.reports.InventoryStatusRecorder;
-import com.panthers.reports.SalesRecorder;
+import com.panthers.reports.ValuationReportor;
+import com.panthers.reports.DepreciationEstimator;
+import com.panthers.reports.InventoryStatusReportor;
 
 public class ReportManager {
 	
 	public static void generateInventoryStatusReport(String filePath) {
-		InventoryStatusRecorder.getInstance().saveReportAsPDF(filePath);
+		InventoryStatusReportor.getInstance().saveReportAsPDF(filePath);
 	}
 	
 	public static void generateSalesReport(String filePath) {
-		SalesRecorder.getInstance().saveReportAsPDF(filePath);
+		ValuationReportor.getInstance().saveReportAsPDF(filePath);
 	}
 	
 	public static void generateValuationReport() {

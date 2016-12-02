@@ -9,7 +9,7 @@ import com.panthers.utilities.Money;
 
 public abstract class Order {
 	// Order and related order classes have no set functions as orders cannot be modified once created other than order status
-	public enum ORDER_STATUS {
+	public enum OrderStatus {
 		ORDER_PROCESSING,
 		ORDER_COMPLETE
 	}
@@ -19,7 +19,7 @@ public abstract class Order {
 	private Date transactionDate;
 	private Money totalPrice;
 	private ArrayList<LineItem> lineItems;
-	private ORDER_STATUS orderStatus;
+	private OrderStatus orderStatus;
 	
 	public Order(int id, Date pd, Date td, Money p, ArrayList<LineItem> li) {
 		this.orderId = id;
@@ -29,7 +29,7 @@ public abstract class Order {
 		this.totalPrice = p;
 		this.lineItems = li;
 		this.totalPrice = new Money(0.0d);
-		this.orderStatus = ORDER_STATUS.ORDER_PROCESSING;
+		this.orderStatus = OrderStatus.ORDER_PROCESSING;
 		
 		for (int i = 0; i < lineItems.size(); i++) {
 			this.totalPrice = new Money(this.totalPrice.getAmount() + lineItems.get(i).getProduct().getPrice().getAmount());
@@ -59,10 +59,10 @@ public abstract class Order {
 	}
 	
 	public void setOrderComplete() {
-		this.orderStatus = ORDER_STATUS.ORDER_COMPLETE;
+		this.orderStatus = OrderStatus.ORDER_COMPLETE;
 	}
 	
-	public ORDER_STATUS getOrderStatus() {
+	public OrderStatus getOrderStatus() {
 		return this.orderStatus;
 	}
 

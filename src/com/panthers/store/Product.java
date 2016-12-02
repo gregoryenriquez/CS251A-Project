@@ -1,36 +1,19 @@
 package com.panthers.store;
 
-import java.util.ArrayList;
-
 import com.panthers.utilities.Money;
-import com.panthers.utilities.Supplier;
+import java.util.Objects;
 
 public class Product {
 	private Money unitPrice;
 	private String UPC;
 	private String name;
 	private String description;
-	private ArrayList<Supplier> suppliers;
 	
 	public Product(String upc, String name, String desc, Money m) {
 		this.UPC = upc;
 		this.name = name;
 		this.description = desc;
 		this.unitPrice = m;
-		this.suppliers = new ArrayList<Supplier>();
-	}
-	
-	public void addSupplier(Supplier s) {
-		this.suppliers.add(s);
-	}
-	
-	public void removeSupplier(Supplier s) {
-		for (int i = 0; i < this.suppliers.size(); i++) {
-			if (suppliers.get(i).getSupplierId() == s.getSupplierId()) {
-				suppliers.remove(i);
-				return;
-			}
-		}
 	}
 	
 	public Money getPrice() {
@@ -40,12 +23,34 @@ public class Product {
 	public void setPrice(Money m) {
 		unitPrice = m;
 	}
-	
-	public String getUPC() {
-		return this.UPC;
-	}
-	
-	public String getDescription() {
-		return this.description;
-	}
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.UPC);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product other = (Product) obj;
+        if (!Objects.equals(this.UPC, other.UPC)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" + "unitPrice=" + unitPrice + ", UPC=" + UPC + ", description=" + description + '}';
+    }
 }

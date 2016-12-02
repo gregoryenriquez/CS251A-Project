@@ -14,6 +14,8 @@ public class Date {
     
     public static int getDurationInDays(Date start, Date end) {
         // NOT IMPLEMENTED YET
+        //int dayDuration = ChronoUnit.DAYS.between(startDate, endDate);
+        //return dayDuration
         return 0;
     }
     

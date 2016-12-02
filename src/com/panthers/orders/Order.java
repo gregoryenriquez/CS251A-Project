@@ -65,4 +65,36 @@ public abstract class Order {
 	public ORDER_STATUS getOrderStatus() {
 		return this.orderStatus;
 	}
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 71 * hash + this.orderId;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Order other = (Order) obj;
+        if (this.orderId != other.orderId) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" + "orderId=" + orderId + ", purchaseOrderDate=" + purchaseOrderDate + ", transactionDate=" + transactionDate + ", totalPrice=" + totalPrice + ", lineItems=" + lineItems + ", orderStatus=" + orderStatus + '}';
+    }
+        
+        
 }

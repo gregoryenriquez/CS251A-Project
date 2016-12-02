@@ -1,8 +1,10 @@
 package com.panthers.orders;
 
 import com.panthers.utilities.Date;
+import java.io.Serializable;
+import java.util.Objects;
 
-public class Transaction {
+public class Transaction implements Serializable {
 	public static enum TRANSACTION_TYPE {
 		PURCHASE,
 		REPLENLISHMENT
@@ -39,4 +41,46 @@ public class Transaction {
 	public TRANSACTION_TYPE getTransactionType() {
 		return this.ttype;
 	}
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.order);
+        hash = 97 * hash + Objects.hashCode(this.transactionId);
+        hash = 97 * hash + Objects.hashCode(this.executedDate);
+        hash = 97 * hash + Objects.hashCode(this.ttype);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Transaction other = (Transaction) obj;
+        if (!Objects.equals(this.transactionId, other.transactionId)) {
+            return false;
+        }
+        if (!Objects.equals(this.order, other.order)) {
+            return false;
+        }
+        if (!Objects.equals(this.executedDate, other.executedDate)) {
+            return false;
+        }
+        if (this.ttype != other.ttype) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" + "order=" + order + ", transactionId=" + transactionId + ", executedDate=" + executedDate + ", ttype=" + ttype + '}';
+    }
 }

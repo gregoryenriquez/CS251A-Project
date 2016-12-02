@@ -1,10 +1,12 @@
 package com.panthers.services;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.panthers.orders.OrderPoint;
 import com.panthers.orders.ReplenishmentOrder;
+import com.panthers.store.LineItem;
 import com.panthers.store.Product;
 import com.panthers.store.Store;
 import com.panthers.store.Store.StoreStatus;
@@ -43,12 +45,17 @@ public class InventoryManager {
 			return false;
 		}
 		inventory.get(UPC).setStoreStatus(StoreStatus.ARCHIVED);
-	
 		return true;
 	}
 	
-	public boolean executeReplenishmentOrder(ReplenishmentOrder ro) {
-		return false;
+	public boolean executeReplenishmentOrder(ReplenishmentOrder order) {
+		ArrayList<LineItem> lineItems = order.getLineItems();
+		for (int i = 0; i < lineItems.size(); i++) {
+			String upc = lineItems.get(i).getProduct().getUpc();
+			Quantity quantity = lineItems.get(i).getQuantity();
+			inventory.get(upc).addProductQuantity(quantity);
+		}
+		return true;
 	}
 	
 	public void incrementStock(String UPC, Quantity q) {

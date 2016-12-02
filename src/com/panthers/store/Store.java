@@ -26,8 +26,8 @@ public class Store {
 	public Store(String id, Product product, OrderPoint orderPoint) {
 		this.storeId = id;
 		this.product = product;
-		this.productQuantity = new Quantity(0, null); 
-		this.reservedQuantity = new Quantity(0, null); 
+		this.productQuantity = new Quantity(0, Quantity.Unit.count); 
+		this.reservedQuantity = new Quantity(0, Quantity.Unit.count); 
 		this.records = new ArrayList<Transaction>();
 		this.orderPoint = orderPoint;
 		this.status = StoreStatus.AVAILABLE;

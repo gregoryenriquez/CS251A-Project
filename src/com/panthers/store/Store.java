@@ -1,86 +1,159 @@
 package com.panthers.store;
 
-import java.util.ArrayList;
-
 import com.panthers.orders.OrderPoint;
 import com.panthers.orders.Transaction;
+import java.util.Set;
+
 import com.panthers.utilities.Quantity;
-import com.panthers.utilities.Unit;
+import java.util.Objects;
 
 public class Store {
-	private String storeId;
-	private Quantity productQuantity;
-	private Quantity reservedQuantity;
-	private ArrayList<Transaction> records;
-	private OrderPoint orderPoint;
-	private Product product;
-	
-	public enum STORE_STATUS {
-		LOW_STOCK,
-		OUT_OF_STOCK,
-		AVAILABLE
-	}
-	
-	public Store(String id, Product p, OrderPoint op) {
-		this.storeId = id;
-		this.product = p;
-		this.productQuantity = new Quantity(0, Unit.COUNT);
-		this.reservedQuantity = new Quantity(0, Unit.COUNT);
-		this.records = new ArrayList<Transaction>();
-		this.orderPoint = op;
-	}
-	
-	public String getId() {
-		return this.storeId;
-	}
-	
-	public void addProductQuantity(Quantity q) {
-		this.productQuantity.add(q);
-	}
-	
-	public void removeProductQuantity(Quantity q) {
-		this.productQuantity.sub(q);
-	}
-	
-	public Quantity getProductQuantity() {
-		return this.productQuantity;
-	}
-	
-	public void addReservedQuantity(Quantity q) {
-		this.reservedQuantity.add(q);
-	}
-	
-	public void removeReservedQuantity(Quantity q) {
-		this.reservedQuantity.sub(q);
-	}
-	
-	public Quantity getReservedQuantity() {
-		return this.reservedQuantity;
-	}
-	
-	public ArrayList<Transaction> getRecords() {
-		return this.records;
-	}
-	
-	public void addRecord(Transaction t) {
-		this.records.add(t);
-	}
-	
-	public OrderPoint getOrderPoint() {
-		return this.orderPoint;
-	}
-	
-	public void setOrderPoint(OrderPoint op) {
-		this.orderPoint = op;
-	}
-	
-	public Product getProduct() {
-		return this.product;
-	}
-	
-	public void setProduct(Product p) {
-		this.product = p;
-	}
+    /**
+     * Default constructor
+     */
+    private String storeID;
+    private Quantity[] productQuantity, reservedQuantity;
+    private Product product;
+    private Set<Transaction> statement;
+    private OrderPoint orderPoint;
+    private StoreStatus status;
+    
+    public Store(String storeID, Quantity[] productQuantity, Product product) {
+        this.storeID = storeID;
+        this.productQuantity = productQuantity;
+        this.product = product;
+    }
 
-	
+    /**
+     * @param q 
+     * @return
+     */
+    private boolean addProductQuantity(Quantity q) {
+        // TODO implement here
+        return false;
+    }
+
+    /**
+     * @param q 
+     * @return
+     */
+    private boolean removeProductQuantity(Quantity q) {
+        // TODO implement here
+        return false;
+    }
+
+    /**
+     * @param q 
+     * @return
+     */
+    private boolean addReservedProductQuantity(Quantity q) {
+        // TODO implement here
+        return false;
+    }
+
+    /**
+     * @param q 
+     * @return
+     */
+    private boolean removeReservedProductQuantity(Quantity q) {
+        // TODO implement here
+        return false;
+    }
+
+    /**
+     * @param t 
+     * @return
+     */
+    private boolean addRecord(Transaction t) {
+        // TODO implement here
+        return false;
+    }
+
+    private static class StoreStatus {
+
+        public StoreStatus() {
+        }
+    }
+
+    public Quantity[] getProductQuantity() {
+        return productQuantity;
+    }
+
+    public void setProductQuantity(Quantity[] productQuantity) {
+        this.productQuantity = productQuantity;
+    }
+
+    public Quantity[] getReservedQuantity() {
+        return reservedQuantity;
+    }
+
+    public void setReservedQuantity(Quantity[] reservedQuantity) {
+        this.reservedQuantity = reservedQuantity;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Set<Transaction> getStatement() {
+        return statement;
+    }
+
+    public void setStatement(Set<Transaction> statement) {
+        this.statement = statement;
+    }
+
+    public OrderPoint getOrderPoint() {
+        return orderPoint;
+    }
+
+    public void setOrderPoint(OrderPoint orderPoint) {
+        this.orderPoint = orderPoint;
+    }
+
+    public StoreStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(StoreStatus status) {
+        this.status = status;
+    }
+
+    public String getStoreID() {
+        return storeID;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.storeID);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Store other = (Store) obj;
+        if (!Objects.equals(this.storeID, other.storeID)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Store{" + "storeID=" + storeID + ", productQuantity=" + productQuantity + ", reservedQuantity=" + reservedQuantity + ", product=" + product + ", statement=" + statement + ", orderPoint=" + orderPoint + ", status=" + status + '}';
+    }
 }

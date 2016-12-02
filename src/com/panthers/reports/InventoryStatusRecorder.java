@@ -1,12 +1,11 @@
 package com.panthers.reports;
 
-import com.panthers.orders.OrderPoint;
 import com.panthers.orders.Transaction;
 import com.panthers.services.InventoryManager;
 import com.panthers.store.Store;
-import com.panthers.utilities.Quantity;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class InventoryStatusRecorder implements Report {
 	private static InventoryStatusRecorder instance = null;
@@ -46,7 +45,7 @@ public class InventoryStatusRecorder implements Report {
                         
             // Quantity productQuantity = store.getProductQuantity();
             // Quantity reservedQuanaity = store.getReservedQuantity();
-            // Quantity quantityInHand = productQuantity - reservedQuanaity;
+            // Quantity quantityOnHand = productQuantity - reservedQuanaity;
             // OrderPoint op = store.getOrderPoint();
             // StoreStatus productStatus = store.getStatus();
             
@@ -58,4 +57,14 @@ public class InventoryStatusRecorder implements Report {
             Transaction[] trans = null;
             return new ArrayList<Transaction>(Arrays.asList(trans));
 	}
+        
+        public List<String> listAllUPCs() {
+            // search all data from db
+            return null;
+        }
+        
+        public List<String> listSupplierInfo(String upc) {
+            // query all suppliers from db
+            return null;
+        }
 }
